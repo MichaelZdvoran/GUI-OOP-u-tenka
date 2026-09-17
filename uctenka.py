@@ -1,14 +1,26 @@
-import requests
+from prettytable import PrettyTable
 
-print("=== Python Receipt OCR ===")
 
-receiptOcrEndpoint = 'https://ocr.asprise.com/api/v1/receipt' # Receipt OCR API endpoint
-imageFile = "US-1.jpg" # // Modify it to use your own file
-r = requests.post(receiptOcrEndpoint, data = { \
-  'api_key': 'TEST',        # Use 'TEST' for testing purpose \
-  'recognizer': 'auto',       # can be 'US', 'CA', 'JP', 'SG' or 'auto' \
-  'ref_no': 'ocr_python_123', # optional caller provided ref code \
-  }, \
-  files = {"file": open(imageFile, "rb")})
+print('--------------WELCOME TO XYZ Shop--------------\n')
+table = PrettyTable(['Item Name', 'Item Price'])
+total = 0
 
-print(r.text) # result in JSON
+while(1):
+    name = input('Enter Item name:')
+    
+    # 'q' to exit and print the table
+    if(name != 'q'):
+        price = int(input('Enter the Price:'))
+        
+        # store all the prices in 'total'
+        total += price
+        table.add_row([name, price])
+        continue
+    
+    elif(name == 'q'):
+        break
+        
+table.add_row(['TOTAL', total])
+print(table)
+print('\nThanks for shopping with us :)')
+print('Your total bill amount is ', total, '/-')
