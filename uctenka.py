@@ -1,9 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# -------------------------
 # JÍDLA A CENY
-# -------------------------
+
 jidla = {
    "Hamburger": {
        "cena": 120,
